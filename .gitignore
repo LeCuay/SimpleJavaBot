@@ -7,6 +7,19 @@
 # BlueJ files
 *.ctxt
 
+# Visual settings
+.vscode/
+
+# Personal configuration
+JavaBot/config/config.ini
+
+# Maven and NetBeans settings
+JavaBot/.settings
+JavaBot/.classpath
+JavaBot/target
+JavaBot/.project
+JavaBot/nbactions.xml
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
