@@ -39,8 +39,11 @@ public abstract class AbstractPlugin {
 	/** The category this plugin belongs to. */
 	protected static String category;
         
-        /** The prefix this command use to initialize. */
-        protected static String commandPrefix;
+	/** The prefix this command use to initialize. */
+	protected static String commandPrefix;
+
+	/** Bot's prefix */
+	protected static String botPrefix = Config.getPrefix();
 	
 	/**
 	 * Obligatory constructor for each Plugin.
@@ -54,8 +57,8 @@ public abstract class AbstractPlugin {
 		AbstractPlugin.channel = channel;
 		AbstractPlugin.pluginName = getPluginName();
 		AbstractPlugin.description = getDescription();
-                AbstractPlugin.commandPrefix = Config.getPrefix()+pluginName;
-		AbstractPlugin.usage = commandPrefix+getUsage();
+		AbstractPlugin.commandPrefix = Config.getPrefix() + pluginName;
+		AbstractPlugin.usage = commandPrefix + getUsage();
 		AbstractPlugin.category = getCategory();
 	}
 	
@@ -88,28 +91,28 @@ public abstract class AbstractPlugin {
 	 */
 	public String getPluginName() {
 		String nameOfPlugin = this.getClass().getSimpleName();
-		return Character.toLowerCase(nameOfPlugin.charAt(0)) + nameOfPlugin.substring(1);
+		return CapitalizeString.decapitalizeByFirstLetter(nameOfPlugin);
 	}
-        
-        public String getCommandPrefix(){return commandPrefix;}
-        
-        /**
-         * Method created to load plugins as {@code modules}. <br>
-         * It works the same way <b><i>__import__</i></b> from Python.
-         * @param pluginName The plugin to load.
-         * @return The Plugin Object initializated.
-         * @throws ClassNotFoundException In case that plugin doesn't exist.
-         */
-        protected static AbstractPlugin loadPlugin(String pluginName) throws ClassNotFoundException {
-            Class<?> pluginClass = Class.forName("plugins."+CapitalizeString.byFirstLetter(pluginName));
-            Constructor<?> pluginConst = pluginClass.getConstructors()[0];
-            Object pluginObj = new Object();
-            try {
-                pluginObj = pluginConst.newInstance(bot, message, channel);
-            } catch (IllegalArgumentException | InvocationTargetException | InstantiationException | IllegalAccessException ex) {
-                System.err.println("Variables might not be initializated.");
-            }
-            return (AbstractPlugin) pluginObj;
-        }
+	
+	public String getCommandPrefix(){return commandPrefix;}
+	
+	/**
+	 * Method created to load plugins as {@code modules}. <br>
+	 * It works the same way <b><i>__import__</i></b> from Python.
+	 * @param pluginName The plugin to load.
+	 * @return The Plugin Object initializated.
+	 * @throws ClassNotFoundException In case that plugin doesn't exist.
+	 */
+	protected static AbstractPlugin loadPlugin(String pluginName) throws ClassNotFoundException {
+		Class<?> pluginClass = Class.forName("plugins." + CapitalizeString.byFirstLetter(pluginName));
+		Constructor<?> pluginConst = pluginClass.getConstructors()[0];
+		Object pluginObj = new Object();
+		try {
+			pluginObj = pluginConst.newInstance(bot, message, channel);
+		} catch (IllegalArgumentException | InvocationTargetException | InstantiationException | IllegalAccessException ex) {
+			System.err.println("Variables might not be initializated.");
+		}
+		return (AbstractPlugin) pluginObj;
+	}
 
 }

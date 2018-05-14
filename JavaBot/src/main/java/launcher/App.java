@@ -52,7 +52,7 @@ public class App extends ListenerAdapter implements EventListener {
 	 */
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		if(event.getMessage().getContentRaw().startsWith(Config.getPrefix())) {
+		if(event.getMessage().getContentRaw().startsWith(Config.getPrefix()) && !event.getAuthor().isBot()) {
 			String plugin = event.getMessage().getContentRaw().replace(Config.getPrefix(), "").split(" ")[0];
 			try {
 				Class<?> pluginClass = Class.forName("plugins." + CapitalizeString.byFirstLetter(plugin));

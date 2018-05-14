@@ -42,7 +42,7 @@ public class Help extends AbstractPlugin {
         // Getting every Class "plugins.Class"
         Set<Class<? extends Object>> allPlugins = reflect.getSubTypesOf(Object.class);
         
-        ArrayList<String> plugins = new ArrayList();
+        ArrayList<String> plugins = new ArrayList<>();
         
         // Doing action for-each element in package "plugins"
         allPlugins.forEach(plugin -> {
