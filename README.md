@@ -1,5 +1,6 @@
 # SimpleJavaBot
 [![GitHub release](https://img.shields.io/github/release/LeCuay/SimpleJavaBot.svg?style=flat-square)](https://github.com/LeCuay/SimpleJavaBot)
+[![JDK 8](https://img.shields.io/badge/JDK-8+-red.svg?style=flat-square)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html "Download JDK 8")
 
 *Simple template for a Java bot.*
 
