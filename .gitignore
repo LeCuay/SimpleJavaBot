@@ -12,6 +12,7 @@
 
 # Personal configuration
 JavaBot/config/config.ini
+JavaBot/pom.xml
 
 # Maven and NetBeans settings
 JavaBot/.settings
@@ -33,3 +34,4 @@ JavaBot/nbactions.xml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/JavaBotIDE/target/
