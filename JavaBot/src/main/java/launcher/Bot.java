@@ -12,7 +12,7 @@ import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-// Excepciones
+// Exceptions
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import javax.security.auth.login.LoginException;
 
@@ -23,12 +23,13 @@ import plugins.AbstractPlugin;
 import utilities.CapitalizeString;
 
 /**
- * Bot
+ * This class manage the Bot start up.<br>
+ * Basically it's just an extension from ListenerAdapter which reads Plugins.
  */
 public class Bot extends ListenerAdapter implements EventListener {
     protected static JDA bot;
 
-    public Bot()
+    public void run()
     throws LoginException, RateLimitedException {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(Config.getToken());

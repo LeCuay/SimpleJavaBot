@@ -8,6 +8,7 @@ public class App {
     public static void main(String[] args)
     throws LoginException, RateLimitedException {
             Bot bot = new Bot();
+            bot.run();
 	}
 
 }
